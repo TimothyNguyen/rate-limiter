@@ -1,3 +1,3 @@
-.\venv\Scripts\activate
-py -m pip install fastapi uvicorn
-uvicorn rate-limiter:app --reload
+- .\venv\Scripts\activate
+- py -m pip install fastapi uvicorn
+- uvicorn api:app --reload
