@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Request
-from sliding_counter_window import SlidingCounterWindow
+from sliding_counter import SlidingWindow
 from token_bucket import TokenBucket
 from fixed_counter_window import FixedCounterWindow
 
@@ -10,8 +10,8 @@ class RateLimitFactory:
             return TokenBucket()
         elif algorithm == "FixedCounterWindow":
             return FixedCounterWindow()
-        elif algorithm == "SlidingCounterWindow":
-            return SlidingCounterWindow()
+        elif algorithm == "SlidingWindow":
+            return SlidingWindow()
         else:
             raise HTTPException(status_code=404, detail="No algorithm specified")
 

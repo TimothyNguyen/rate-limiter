@@ -3,7 +3,7 @@ import asyncio
 from rate_limit_dto import RateLimit, RateLimitExceeded
 
 
-class SlidingCounterWindow(RateLimit):
+class SlidingWindow(RateLimit):
     def __init__(self, limit_per_interval: int = 60, time_interval: int = 60):
         """
         Initialize the token bucket.

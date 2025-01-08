@@ -20,3 +20,7 @@ async def limited(request: Request):
             return "This is a limited use API"
     except RateLimitExceeded as e:
         raise e
+    
+@app.get("/unlimited")
+def unlimited(request: Request):
+    return "Free to use API limitless"
