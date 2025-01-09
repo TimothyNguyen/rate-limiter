@@ -35,8 +35,6 @@ class TokenBucket(RateLimit):
             self.tokens = min(self.token_capacity, self.tokens + tokens_to_add)
             self.last_refill = current_time
         
-        print(self.tokens)
-
         async with self.bucket_semaphore:
             if self.tokens >= 1:
                 self.tokens -= 1
