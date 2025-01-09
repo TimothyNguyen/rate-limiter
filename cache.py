@@ -6,6 +6,15 @@ class Cache:
         self.redis_client = redis.StrictRedis(host='localhost', port=6379, db=1)
         self.expiration_time_seconds = 60
     
+    def set_data(self,ip,current_window_counter,prev_window_counter,curr_window):
+        data = {
+            "current_window_counter": current_window_counter,
+            "prev_window_counter": prev_window_counter,
+            "curr_window": str(curr_window)
+        }
+        self.redis_client.hmset(ip, data)
+        self.redis_client.expire(ip, self.expiration_time_seconds)
+    
     # investigate if redis has a semaphore option
     def acquire_lock(self, ip):
         key = f"ip:{ip}"
